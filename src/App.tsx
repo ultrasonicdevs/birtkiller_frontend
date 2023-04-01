@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {ElementType} from 'react';
+import {Button} from './ui';
+import {ButtonProps} from "./ui/Button/types";
+import {Modal} from "./cpmponents";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+export type BtnState = ButtonProps<ElementType>
+
+export const values : BtnState[] = [
+	{as: "button", children: "button"},
+	{as: "link", children: "link"}
+];
+
+const App = () => {
+	const [items, setItems] = React.useState<any[]>([]);
+	return (
+		<>
+			<Modal setSelected={setItems} />
+			{items.map(({as,children, ...otherProps}: BtnState, index: number) => <Button key={index} as={as} {...otherProps}>{children}</Button>)}
+		</>
   );
 }
 
