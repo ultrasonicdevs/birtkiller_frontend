@@ -1,10 +1,11 @@
-import React, {ElementType} from 'react';
+import React from 'react';
+import {useContextMenu} from "./hooks";
+import {ButtonProps} from "./ui/";
+import {ContextMenu} from "./components";
 import {Button} from './ui';
-import {ButtonProps} from "./ui/Button/types";
-import {Modal} from "./cpmponents";
 
 
-export type BtnState = ButtonProps<ElementType>
+export type BtnState = ButtonProps
 
 export const values : BtnState[] = [
 	{as: "button", children: "button"},
@@ -12,12 +13,23 @@ export const values : BtnState[] = [
 ];
 
 const App = () => {
-	const [items, setItems] = React.useState<any[]>([]);
+	const [items, setItems] = React.useState<ButtonProps[]>([]);
+	
+	const [ref, element, makeVisible] = useContextMenu();
+	
 	return (
-		<>
-			<Modal setSelected={setItems} />
-			{items.map(({as,children, ...otherProps}: BtnState, index: number) => <Button key={index} as={as} {...otherProps}>{children}</Button>)}
-		</>
+		<section ref={ref} onContextMenu={(e:React.MouseEvent) => makeVisible(e)}>
+			<ContextMenu element={element}/>
+			{items.map(
+				({
+					as,
+					children,
+					...otherProps
+				}: BtnState, index:number) =>
+				<Button key={index} as={as} {...otherProps}>{children}</Button>
+			)}
+			<Button as="link" href="https://google.com" arrow>Google</Button>
+		</section>
   );
 }
 

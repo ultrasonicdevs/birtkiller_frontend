@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 export const StyleButton = animated(
 	styled.button`
-		border: ${props => props?.style?.border || "solid 1px #1C1C1C"};
+		border: ${props =>
+		props?.style?.border || "solid 1px #1C1C1C"};
 	  border-radius: ${props => props?.style?.borderRadius || "10px"};
 	  padding: ${props => props?.style?.padding || "14px 24px"};
 		

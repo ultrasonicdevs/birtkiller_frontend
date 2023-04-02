@@ -16,5 +16,12 @@ export const VariantTags = {
 // type InputButtonOwnProps = { as: keyof typeof InputTags, arrow?: boolean, type: keyof typeof VariantInput, value: any, children?: never }
 // type InputButtonProps <E extends ElementType> = InputButtonOwnProps & Omit<ComponentProps<E>, keyof InputButtonOwnProps>;
 // export type ButtonProps <E extends ElementType> = (ButtonOwnProps & Omit<ComponentProps<E>, keyof ButtonOwnProps>) | InputButtonProps<E>;
-type ButtonOwnProps = { as: keyof typeof VariantTags, children?: any, arrow?: boolean }
-export type ButtonProps <E extends ElementType> = (ButtonOwnProps &	Omit<ComponentProps<E>,	keyof ButtonOwnProps>);
+type ButtonOwnProps = {
+	as: keyof typeof VariantTags,
+	children: any,
+	arrow?: boolean
+}
+export type ButtonProps
+	<E extends ElementType = ElementType> = (
+		ButtonOwnProps & Omit<ComponentProps<E>, keyof ButtonOwnProps>
+	);
