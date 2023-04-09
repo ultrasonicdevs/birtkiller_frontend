@@ -1,9 +1,8 @@
-import {Ref, Dispatch, SetStateAction, MouseEvent, RefObject} from "react";
+import {Dispatch, SetStateAction, MouseEvent, RefObject} from "react";
 
 
 export type MenuState = {
 	visible: boolean,
-	setVisible: Dispatch<SetStateAction<boolean>>
 	left: number,
 	top: number,
 }

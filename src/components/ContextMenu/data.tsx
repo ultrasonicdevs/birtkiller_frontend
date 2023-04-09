@@ -1,6 +1,6 @@
 import {ContextMenuItem} from "./types";
 import React, {ReactElement} from "react";
-
+// import styled from "styled-components";
 
 const style = {
 	backgroundHover: "#4D4D4D",
@@ -10,14 +10,32 @@ const style = {
 	border: "none",
 	width: "100%",
 }
-const Refactor = (): ReactElement => (
-	<>
-		<p>форма изменения компонента</p>
-	</>
-);
+const Refactor = (): ReactElement => {
+	return (
+		<>
+			<p>форма изменения компонента</p>
+		</>
+	);
+}
+
+// const Form = styled.form`
+// 	background-color: #4D4D4D;
+//   color: #fff;
+// 	font-family: Raleway, sans-serif;
+// 	font-weight: 600;
+// 	font-size: 20px;
+//
+//   padding: 15px;
+//   margin: 0;
+// 	flex-direction: column;
+//   gap: 10px;
+// `
+
 const Add = (): ReactElement => (
 	<>
-		<p>форма создание компонента</p>
+		<select name="component-type" id="component-type">
+			<option value=""></option>
+		</select>
 	</>
 );
 export const tagContextMenu: ContextMenuItem[] = [

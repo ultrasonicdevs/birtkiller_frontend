@@ -2,17 +2,16 @@ import React from 'react';
 import {Button} from "../../../ui";
 import SubItem from "../SubItem/SubItem";
 import {ContextMenuItem} from "../types";
-import {useContextMenu} from "../../../hooks";
+import {useVisible} from "../../../hooks";
 
 const Item = ({button, subItems}: ContextMenuItem) => {
 	
-	// const [isVisible, setVisible] = React.useState<boolean>(false)
-	const [ref, state, setVisible] = useContextMenu();
+	const [ref, state, setVisible] = useVisible();
 	return (
-		<li>
+		<section ref={ref}>
 			<Button {...button} onClick={(e: React.MouseEvent) => setVisible(e)}>{button.children}</Button>
-			<SubItem visible={state.visible} setVisible={state.setVisible}>{subItems}</SubItem>
-		</li>
+			<SubItem visible={state}>{subItems}</SubItem>
+		</section>
 	)
 }
 
