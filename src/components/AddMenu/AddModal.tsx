@@ -13,11 +13,14 @@ const AddModal = ({setSelected}: IModal) => {
 		  <select value={value} onChange={(event:React.ChangeEvent<HTMLSelectElement>) => setValue(Number(event.target.value))}>
 			  {Object.values(values).map((variant, index) => <option key={index} value={index}>{variant.as}</option>)}
 		  </select>
-			<Button as="button" type="submit" onClick={() => setSelected((prevState:any[]) =>
+			<Button as="button" type="submit" onClick={(e: React.MouseEvent) => {
+				e.preventDefault();
+				setSelected((prevState:any[]) =>
 				[
 					...prevState,
 					<Button key={prevState.length} as={values[value].as}>{values[value].children}</Button>
 				])}
+			}
 			>add</Button>
 	  </form>
   );

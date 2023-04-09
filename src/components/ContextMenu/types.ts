@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction, ReactElement} from "react";
+import React, {Dispatch, SetStateAction, ReactElement, ForwardedRef} from "react";
 import {ButtonProps} from "../../ui";
 
 export interface IRef {
@@ -6,14 +6,13 @@ export interface IRef {
 }
 
 export type ContextMenuState = {
-	visible: boolean
+	visible?: boolean
 	left?: number
 	top?: number
 }
 
 export type SubItemProps = {
 	visible: boolean
-	setVisible: Dispatch<SetStateAction<boolean>>
 	children: any
 };
 
@@ -24,6 +23,6 @@ export type ContextMenuItem = {
 
 export type ContextMenuProps = {
 	menuItems?: ContextMenuItem[]
-	element: ContextMenuState,
+	element: ContextMenuState
 }
 

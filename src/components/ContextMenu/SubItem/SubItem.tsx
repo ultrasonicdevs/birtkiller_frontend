@@ -3,12 +3,16 @@ import {Form} from "../styles";
 import {SubItemProps} from "../types";
 import {Button} from "../../../ui";
 
-const SubItem = ({visible = false, setVisible, children}: SubItemProps) => {
+const SubItem = ({visible = false, children}: SubItemProps) => {
+
+	
 	return (
+		<>
 		<Form visible={visible}>
 			{React.createElement(children)}
-			<Button as="button" onClick={() => setVisible(false)}>Отправить</Button>
+			<Button as="button">Отправить</Button>
 		</Form>
+		</>
 	);
 }
 
